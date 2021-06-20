@@ -14,13 +14,14 @@ const showAll = async (req, res) => {
 // Crear registro
 const create = async (req, res) => {
 	try {
-		const { marca, modelo, año, patente, color } = await req.body;
+		const { marca, modelo, año, patente, color, propietario } = await req.body;
 		const auto = new AutoModel({
 			marca,
 			modelo,
 			año,
 			patente,
 			color,
+			propietario,
 		});
 
 		const resultado = await auto.save();
@@ -43,7 +44,7 @@ const create = async (req, res) => {
 
 // Actualizar registro
 const update = async (req, res) => {
-	const { id, marca, modelo, año, patente, color } = req.body;
+	const { id, marca, modelo, año, patente, color, propietario } = req.body;
 
 	try {
 		const auto = await AutoModel.updateOne(
@@ -55,6 +56,7 @@ const update = async (req, res) => {
 					año,
 					patente,
 					color,
+					propietario,
 				},
 			}
 		);

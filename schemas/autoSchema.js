@@ -7,6 +7,7 @@ const autoSchema = mongoose.Schema(
 		año: Number,
 		patente: String,
 		color: String,
+		propietario: String,
 	},
 	{ versionKey: false } // Quita el __v de mongoDB
 );
