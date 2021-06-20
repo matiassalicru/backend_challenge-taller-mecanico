@@ -17,6 +17,9 @@ app.get('/', (req, res) => {
 // Routes
 app.use('/car', require('./routes/getAllCars'));
 app.use('/car', require('./routes/createCar'));
+app.use('/car', require('./routes/updateCar'));
+app.use('/car', require('./routes/deleteCar'));
+//PROBAR UPDATE AND DELETE
 
 // Server on
 app.listen(app.get('port'), () => {
