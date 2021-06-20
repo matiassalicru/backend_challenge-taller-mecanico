@@ -7,6 +7,6 @@ const jsonParser = bodyParser.json();
 
 const router = Router();
 
-router.delete('/create', jsonParser, deleteCar);
+router.delete('/delete', jsonParser, deleteCar);
 
 module.exports = router;

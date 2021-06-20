@@ -7,6 +7,6 @@ const jsonParser = bodyParser.json();
 
 const router = Router();
 
-router.put('/create', jsonParser, update);
+router.put('/update', jsonParser, update);
 
 module.exports = router;

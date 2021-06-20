@@ -5,7 +5,7 @@ const showAll = async (req, res) => {
 	const autos = await AutoModel.find();
 	// console.log(autos);
 
-	res.json({
+	res.status(200).json({
 		ok: true,
 		autos,
 	});
@@ -26,12 +26,18 @@ const create = async (req, res) => {
 		const resultado = await auto.save();
 		console.log(resultado);
 
-		res.json({
+		res.status(200).json({
 			ok: true,
 			resultado,
 		});
 	} catch (error) {
 		console.log(`HA HABIDO UN ERROR -> ${error}`);
+
+		res.status(500).json({
+			ok: false,
+			msg: 'Error en el servidor...',
+			error,
+		});
 	}
 };
 
@@ -41,7 +47,7 @@ const update = async (req, res) => {
 
 	try {
 		const auto = await AutoModel.updateOne(
-			{ _id: req.body.id }, // Tiene que venir el ID por el body.
+			{ _id: id }, // Tiene que venir el ID por el body.
 			{
 				$set: {
 					marca,
@@ -52,22 +58,43 @@ const update = async (req, res) => {
 				},
 			}
 		);
+		res.status(200).json({
+			ok: true,
+			msg: 'Información del auto actualizada',
+			auto,
+		});
 	} catch (error) {
 		console.log(`HUBO UN ERROR -> ${error}`);
+
+		res.status(500).json({
+			ok: false,
+			msg: 'Error en el servidor...',
+			error,
+		});
 	}
 };
 
 // Borrar registro
 const deleteCar = async (req, res) => {
+	const { id } = req.body;
+
+	console.log(req.body);
+
 	try {
-		const auto = await AutoModel.deleteOne({ _id: req.body.id });
+		const auto = await AutoModel.deleteOne({ _id: id });
 		console.log(auto);
-		res.json({
+		res.status(200).json({
 			ok: true,
 			auto,
 		});
 	} catch (error) {
 		console.log(`HUBO UN ERROR -> ${error}`);
+
+		res.status(500).json({
+			ok: false,
+			msg: 'Error en el servidor...',
+			error,
+		});
 	}
 };
 
