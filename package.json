@@ -1,0 +1,15 @@
+{
+  "name": "challenge-pickit-back",
+  "version": "0.0.1",
+  "description": "Crud for taller mecanico",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matias Salicru",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^5.12.14"
+  }
+}
