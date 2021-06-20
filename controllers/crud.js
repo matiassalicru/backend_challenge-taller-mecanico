@@ -31,31 +31,49 @@ const create = async (req, res) => {
 			resultado,
 		});
 	} catch (error) {
-		console.log(`HA HABIDO UN ERROR ${error}`);
+		console.log(`HA HABIDO UN ERROR -> ${error}`);
 	}
 };
 
 // Actualizar registro
-const update = async id => {
-	const auto = await AutoModel.updateOne(
-		{ _id: id },
-		{
-			$set: {
-				patente: 'BMX 444',
-			},
-		}
-	);
+const update = async (req, res) => {
+	const { id, marca, modelo, año, patente, color } = req.body;
+
+	try {
+		const auto = await AutoModel.updateOne(
+			{ _id: req.body.id }, // Tiene que venir el ID por el body.
+			{
+				$set: {
+					marca,
+					modelo,
+					año,
+					patente,
+					color,
+				},
+			}
+		);
+	} catch (error) {
+		console.log(`HUBO UN ERROR -> ${error}`);
+	}
 };
 
 // Borrar registro
-const del = async id => {
-	const auto = await AutoModel.deleteOne({ _id: id });
-	console.log(auto);
+const deleteCar = async (req, res) => {
+	try {
+		const auto = await AutoModel.deleteOne({ _id: req.body.id });
+		console.log(auto);
+		res.json({
+			ok: true,
+			auto,
+		});
+	} catch (error) {
+		console.log(`HUBO UN ERROR -> ${error}`);
+	}
 };
 
 module.exports = {
 	showAll,
 	create,
 	update,
-	del,
+	deleteCar,
 };

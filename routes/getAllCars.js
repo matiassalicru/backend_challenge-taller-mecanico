@@ -1,4 +1,4 @@
-const { showAll, update, create, del } = require('../controllers/crud');
+const { showAll } = require('../controllers/crud');
 
 const { Router } = require('express');
 
