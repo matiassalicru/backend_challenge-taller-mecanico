@@ -1,1 +1,3 @@
 DB_PASS=<Password>
+DB_CNN=<Link to connect to the db>
+PORT=<A simple port>
