@@ -1,5 +1,4 @@
 const PropModel = require('../models/PropModel');
-const TransactionModel = require('../models/TransactionModel');
 
 // Mostrar registro
 const showAll = async (req, res) => {
@@ -80,27 +79,6 @@ const update = async (req, res) => {
 	}
 };
 
-const newTransaction = async (req, res) => {
-	const { nombre, costo } = req.body;
-
-	try {
-		const transaction = new TransactionModel({
-			nombre,
-			costo,
-		});
-
-		res.status(200).json({
-			ok: true,
-			transaction,
-		});
-	} catch (error) {
-		res.status(500).json({
-			ok: false,
-			msg: `Error en el servidor ${error}`,
-		});
-	}
-};
-
 // Borrar registro
 const deleteProp = async (req, res) => {
 	const { id } = req.body;
@@ -130,5 +108,4 @@ module.exports = {
 	create,
 	update,
 	deleteProp,
-	newTransaction,
 };

@@ -1,4 +1,5 @@
 const AutoModel = require('../models/AutoModel');
+const TransactionModel = require('../models/TransactionModel');
 
 // Mostrar registro
 const showAll = async (req, res) => {
@@ -9,6 +10,24 @@ const showAll = async (req, res) => {
 		ok: true,
 		autos,
 	});
+};
+
+const getServices = async (req, res) => {
+	const { id } = req.body;
+
+	try {
+		const autoServices = AutoModel.findById(id);
+
+		res.status(200).json({
+			ok: true,
+			autoServices,
+		});
+	} catch (error) {
+		res.status(500).json({
+			ok: false,
+			msg: `error en el servidor. ${error}`,
+		});
+	}
 };
 
 // Crear registro
@@ -121,9 +140,31 @@ const deleteCar = async (req, res) => {
 	}
 };
 
+const newTransaction = async (req, res) => {
+	const { nombre, costo } = req.body;
+
+	try {
+		const transaction = new TransactionModel({
+			nombre,
+			costo,
+		});
+
+		res.status(200).json({
+			ok: true,
+			transaction,
+		});
+	} catch (error) {
+		res.status(500).json({
+			ok: false,
+			msg: `Error en el servidor ${error}`,
+		});
+	}
+};
+
 module.exports = {
 	showAll,
 	create,
 	update,
 	deleteCar,
+	newTransaction,
 };

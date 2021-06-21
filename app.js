@@ -23,7 +23,7 @@ app.use('/prop', require('./routes/getAllProps'));
 app.use('/prop', require('./routes/createProp'));
 app.use('/prop', require('./routes/updateProp'));
 app.use('/prop', require('./routes/deleteProp'));
-app.use('/prop', require('./routes/newTransaction'));
+app.use('/car', require('./routes/newTransaction'));
 
 // Server on
 app.listen(app.get('port'), () => {

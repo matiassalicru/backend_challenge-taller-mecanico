@@ -1,4 +1,4 @@
-const { newTransaction } = require('../controllers/propCrud');
+const { newTransaction } = require('../controllers/carCrud');
 const { Router } = require('express');
 
 // Middleware -> Parser para poder usar req.body en el controller 'create'.
