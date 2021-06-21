@@ -14,7 +14,16 @@ const showAll = async (req, res) => {
 // Crear registro
 const create = async (req, res) => {
 	try {
-		const { marca, modelo, año, patente, color, propietario } = await req.body;
+		const {
+			marca,
+			modelo,
+			año,
+			patente,
+			color,
+			propietario,
+			serviciosRealizados = [],
+		} = await req.body;
+
 		const auto = new AutoModel({
 			marca,
 			modelo,
@@ -22,6 +31,7 @@ const create = async (req, res) => {
 			patente,
 			color,
 			propietario,
+			serviciosRealizados,
 		});
 
 		const resultado = await auto.save();
@@ -44,7 +54,17 @@ const create = async (req, res) => {
 
 // Actualizar registro
 const update = async (req, res) => {
-	const { id, marca, modelo, año, patente, color, propietario } = req.body;
+	// Enviar por el front TODA la info actualizada aunque no se hayan realizado cambios.
+	const {
+		id,
+		marca,
+		modelo,
+		año,
+		patente,
+		color,
+		propietario,
+		serviciosRealizados,
+	} = req.body;
 
 	try {
 		const auto = await AutoModel.updateOne(
@@ -57,6 +77,7 @@ const update = async (req, res) => {
 					patente,
 					color,
 					propietario,
+					serviciosRealizados,
 				},
 			}
 		);

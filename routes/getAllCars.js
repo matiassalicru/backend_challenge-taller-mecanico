@@ -1,4 +1,4 @@
-const { showAll } = require('../controllers/crud');
+const { showAll } = require('../controllers/carCrud');
 
 const { Router } = require('express');
 

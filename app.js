@@ -19,7 +19,11 @@ app.use('/car', require('./routes/getAllCars'));
 app.use('/car', require('./routes/createCar'));
 app.use('/car', require('./routes/updateCar'));
 app.use('/car', require('./routes/deleteCar'));
-//PROBAR UPDATE AND DELETE
+app.use('/prop', require('./routes/getAllProps'));
+app.use('/prop', require('./routes/createProp'));
+app.use('/prop', require('./routes/updateProp'));
+app.use('/prop', require('./routes/deleteProp'));
+app.use('/prop', require('./routes/newTransaction'));
 
 // Server on
 app.listen(app.get('port'), () => {

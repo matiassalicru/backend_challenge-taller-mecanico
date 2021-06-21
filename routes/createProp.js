@@ -1,4 +1,4 @@
-const { update } = require('../controllers/carCrud');
+const { create } = require('../controllers/propCrud');
 const { Router } = require('express');
 
 // Middleware -> Parser para poder usar req.body en el controller 'create'.
@@ -7,6 +7,6 @@ const jsonParser = bodyParser.json();
 
 const router = Router();
 
-router.put('/update', jsonParser, update);
+router.post('/create', jsonParser, create);
 
 module.exports = router;

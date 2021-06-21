@@ -1,4 +1,4 @@
-const { create } = require('../controllers/crud');
+const { create } = require('../controllers/carCrud');
 const { Router } = require('express');
 
 // Middleware -> Parser para poder usar req.body en el controller 'create'.
